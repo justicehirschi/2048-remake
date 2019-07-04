@@ -18,12 +18,6 @@ header h1 {
     clear: both;
 }
 
-#game-over {
-    color: #c44119;
-    font-size: 1.9rem;
-    margin: 0px 0px 20px 0px;
-}
-
 /* Body */
 
 .btn {
@@ -126,16 +120,90 @@ button:hover {
     transition: opacity 0.5s;
 }
 
-/* High Scores Page */
+/* Game Over Page */
 
-#high-scores-page {
-    display: none;
+#game-over-page * {
+    font-weight: bold;
 }
 
-#high-scores-header {
-    color: #8B9474;
-    font-size: 2.7rem;
+#game-over-page {
+    display: none;
+    opacity: 0.85;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: calc(100vh - 60px);
+    background-color: #258f5f;
+    border-radius: 15px;
     text-align: center;
+    color: #fff;
+}
+
+#game-over {
+    font-size: 4.8rem;
+    font-weight: bold;
+    margin: 0px 0px 20px 0px;
+    padding: 180px 0px 20px 0px;
+    margin: 10px 0px 50px 0px;
+}
+
+#game-over-page h3 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#name-field {
+    font-size: 2.0rem;
+    width: 70px;
+}
+
+#game-over-score {
+    font-size: 2.5rem;
+}
+
+#final-score {
+    font-size: 2.5rem;
+}
+
+#submit-score-button {
+    background-color: #000;
+    color: #fff;
+}
+
+/* High Scores Page */
+
+#high-scores-page * {
+    color: #8B9474;
+    text-align: center;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+#high-scores-page {
+    width: 60%;
+    display: none;
+    margin: auto;
+}
+
+#high-scores-heading {
+    font-size: 3.5rem;
+    text-decoration: underline;
+}
+
+#back-button {
+    float: right;
+    padding: 5px 10px;
+}
+
+#high-scores-list {
+    font-size: 2.5rem;
+}
+
+#high-scores-list li {
+    padding: 20px 0px;
 }
 
 /* Footer */

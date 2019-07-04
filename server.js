@@ -5,12 +5,18 @@ const cors = require("cors");
 
 let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors({credentials: true, origin: "null"})); 
+
+var corsOrigin = "null" // localhost
+// var corsOrigin = "https://justicehirschi.github.io" // heroku server
+
+app.use(cors({credentials: true, origin: `${corsOrigin}`})); 
 app.set("port", (process.env.PORT || 8080));
 app.use(express.static("public"));
 
 app.get("/scores", function(request, response) {
-    response.status(200);
+    model.Score.find({}).then(function (scores) {
+        response.json(scores);
+    });
 });
 
 app.post("/scores", function(request, response) {
@@ -23,7 +29,7 @@ app.post("/scores", function(request, response) {
 
     if(request.body.name != "" && request.body.score != "") {
         score.save().then(function() {
-            response.status(201);
+            response.sendStatus(201);
         });
     }
 });

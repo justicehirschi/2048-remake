@@ -1,11 +1,13 @@
+var url = "http://localhost:8080" // localhost
+// var url = "https://local" // heroku server
+
 // Requests to server
 
 // List
 let getScores = function() {
-    fetch("http://localhost:8080/scores").then(response => {
+    fetch(`${url}` + "/scores").then(response => {
         response.json().then(scores => {
-            console.log("Scores:", scores);
-            var scoreList = document.querySelecotr("#high-scores");
+            var scoreList = document.querySelector("#high-scores-list");
             scores.forEach(score => {
                 var item = document.createElement("li");
                 item.innerHTML = score.name + ": " + score.score;
@@ -16,16 +18,16 @@ let getScores = function() {
 };
 
 // Create
-let createScore = function() {
-    fetch("http://localhost:8080/scores", {
+let createScore = function(initials, gameScore) {
+    var data = `name=${encodeURIComponent(initials)}`;
+    data += `&score=${encodeURIComponent(gameScore)}`;
+
+    fetch(`${url}` + "/scores", {
         method: "POST",
-        body: JSON.stringify({
-            name: initials,
-            score: score
-        }),
         headers: {
-            "Content-type": "application/json"
-        }
+            "Content-type": "application/x-www-form-urlencoded"
+        },
+        body: data
     });
 };
 
@@ -233,6 +235,7 @@ document.onkeydown = function (e) {
 
 var resetButton = document.querySelector("#new-game-button");
 resetButton.onclick = function() {
+
     resetBoard();
 };
 
@@ -245,6 +248,8 @@ var resetBoard = function() {
     updateBoard();
     showScore();
 };
+
+// Game Over
 
 var checkIfGameIsOver = function() {
     // Check every tile to see if there is a number
@@ -272,8 +277,8 @@ var checkIfGameIsOver = function() {
         }
     }
 
-    var gameOverDiv = document.querySelector("#game-over");
-    gameOverDiv.innerHTML = "Game Over!";
+    var gameOverDiv = document.querySelector("#game-over-page");
+    gameOverDiv.style.display = "block";
 };
 
 var showScore = function() {
@@ -288,7 +293,37 @@ var showScore = function() {
     }
     var score = document.querySelector("#score");
     score.innerHTML = "Score: " + total;
+
+    var finalScore = document.querySelector("#final-score");
+    finalScore.innerHTML = total;
 };
+
+var submitScoreButton = document.querySelector("#submit-score-button");
+submitScoreButton.onclick = function() {
+    submitScore();
+};
+
+var submitScore = function() {
+    var initials = document.querySelector("#name-field");
+    var score = document.querySelector("#final-score");
+
+    if(initials.value == "") {
+        var addInitials = document.querySelector("#add-initials");
+        addInitials.innerHTML = "Add Initials";
+        return;
+    }
+    else {
+        createScore(initials.value, score.innerHTML);
+        var gameOverDiv = document.querySelector("#game-over-page");
+        gameOverDiv.style.display = "none";
+
+        initials.value = "";
+
+        showHighScores();
+    }
+};
+
+// High Scores Page
 
 var showHighScoresButton = document.querySelector("#high-scores-button");
 showHighScoresButton.onclick = function() {
@@ -297,16 +332,39 @@ showHighScoresButton.onclick = function() {
 
 var showHighScores = function() {
     var header = document.querySelector("header");
-    document.body.removeChild(header);
+    header.style.display = "none";
     var main = document.querySelector("main");
-    document.body.removeChild(main);
+    main.style.display = "none";
     var footer = document.querySelector("footer");
-    document.body.removeChild(footer);
+    footer.style.display = "none";
 
     var highScores = document.querySelector("#high-scores-page");
     highScores.style.display = "block";
 
     getScores();
+};
+
+var backToMainButton = document.querySelector("#back-button");
+backToMainButton.onclick = function() {
+    showMain();
+};
+
+var showMain = function () {
+    var header = document.querySelector("header");
+    header.style.display = "block";
+    var main = document.querySelector("main");
+    main.style.display = "block";
+    var footer = document.querySelector("footer");
+    footer.style.display = "block";
+
+    var highScores = document.querySelector("#high-scores-page");
+    highScores.style.display = "none";
+
+    var scoresList = document.querySelector("#high-scores-list");
+    var li = scoresList.getElementsByTagName("li");
+    while (li.length > 0) {
+        scoresList.removeChild(li[0]);
+    }
 };
 
 createBoard();

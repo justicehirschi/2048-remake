@@ -6,17 +6,26 @@
     <title>2048</title>
 </head>
 <body>
+    <div id="game-over-page">
+        <h2 id="game-over">Game Over!</h2>
+        <input id="name-field" maxlength="3" v-model="name">
+        <h3>Enter Initials</h3>
+        <h3 id="add-initilas"></h3>
+        <h2 id="game-over-score">Score:</h2>
+        <h2 id="final-score"></h2>
+        <button id="submit-score-button">Submit Score</button>
+    </div>
     <header>
         <h1>2048</h1>
         <button id="new-game-button">Start Over</button>
-        <h2 id="game-over"></h2>
     </header>
     <main>
         <div id="board"></div>
     </main>
     <div id="high-scores-page">
-        <h1 id="high-scores-header">High Scores</h1>
-        <ul id="high-scores"></ul>
+        <button id="back-button">Home</button>
+        <h1 id="high-scores-heading" style="clear: both;">High Scores</h1>
+        <ul id="high-scores-list"></ul>
     </div>
     <footer>
         <div id="score-div">
