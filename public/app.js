@@ -225,21 +225,25 @@ var didBoardChange = function (oldBoard) {
 var upArrow = document.querySelector("#up-arrow-key");
 upArrow.onclick = function() {
     combineDirection("up");
+    showScore();
 };
 
 var leftArrow = document.querySelector("#left-arrow-key");
 leftArrow.onclick = function () {
     combineDirection("left");
+    showScore();
 };
 
 var rightArrow = document.querySelector("#right-arrow-key");
 rightArrow.onclick = function () {
     combineDirection("right");
+    showScore();
 };
 
 var downArrow = document.querySelector("#down-arrow-key");
 downArrow.onclick = function () {
     combineDirection("down");
+    showScore();
 };
 
 document.onkeydown = function (e) {
@@ -262,8 +266,6 @@ resetButton.onclick = function() {
 };
 
 var resetBoard = function() {
-    var gameOverDiv = document.querySelector("#game-over");
-    gameOverDiv.innerHTML = "";
     board = {};
     addOneTile();
     addOneTile();
@@ -301,6 +303,9 @@ var checkIfGameIsOver = function() {
 
     var gameOverDiv = document.querySelector("#game-over-page");
     gameOverDiv.style.display = "block";
+
+    var arrowKeys = document.querySelector("#arrow-keys-div");
+    arrowKeys.style.display = "none";
 };
 
 var showScore = function() {
@@ -360,6 +365,9 @@ var showHighScores = function() {
     var footer = document.querySelector("footer");
     footer.style.display = "none";
 
+    var arrowKeys = document.querySelector("#arrow-keys-div");
+    arrowKeys.style.display = "none";
+
     var highScores = document.querySelector("#high-scores-page");
     highScores.style.display = "block";
 
@@ -378,6 +386,9 @@ var showMain = function () {
     main.style.display = "block";
     var footer = document.querySelector("footer");
     footer.style.display = "block";
+
+    var arrowKeys = document.querySelector("#arrow-keys-div");
+    arrowKeys.style.display = "block";
 
     var highScores = document.querySelector("#high-scores-page");
     highScores.style.display = "none";
