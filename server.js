@@ -27,10 +27,12 @@ app.post("/scores", function(request, response) {
         score: request.body.score,
     });
 
-    if(request.body.name != "" && request.body.score != "") {
+    if(request.body.name != "" && request.body.score != "" && request.body.name.length < 4 && request.body.score.length < 8) {
         score.save().then(function() {
             response.sendStatus(201);
         });
+    } else {
+        response.sendStatus(400);
     }
 });
 
