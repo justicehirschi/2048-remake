@@ -220,6 +220,28 @@ var didBoardChange = function (oldBoard) {
     return false;
 };
 
+// Keys and Arrow-key buttons
+
+var upArrow = document.querySelector("#up-arrow-key");
+upArrow.onclick = function() {
+    combineDirection("up");
+};
+
+var leftArrow = document.querySelector("#left-arrow-key");
+leftArrow.onclick = function () {
+    combineDirection("left");
+};
+
+var rightArrow = document.querySelector("#right-arrow-key");
+rightArrow.onclick = function () {
+    combineDirection("right");
+};
+
+var downArrow = document.querySelector("#down-arrow-key");
+downArrow.onclick = function () {
+    combineDirection("down");
+};
+
 document.onkeydown = function (e) {
     if (e.which == 37) {
         combineDirection("left");

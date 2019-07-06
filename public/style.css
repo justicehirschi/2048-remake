@@ -218,3 +218,46 @@ button:hover {
 #high-scores-button {
     float: right;
 }
+
+
+/* Arrow Keys */
+
+#arrow-keys-div {
+    width: 540px;
+    text-align: center;
+    margin: auto;
+}
+
+.arrow-key {
+    display: none;
+    width: 100px;
+    height: 100px;
+    background-color: #117175;
+    color: #F5A65B;
+    font-size: 5.0rem;
+    text-align: center;
+    margin: auto;
+}
+
+#up-arrow-key {
+    margin-bottom: 5px;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .arrow-key {
+        display: block;
+    }
+
+    #left-arrow-key {
+        display: inline-block;
+    }
+
+    #down-arrow-key {
+        display: inline-block;
+    }
+
+    #right-arrow-key {
+        display: inline-block;
+    }
+}
