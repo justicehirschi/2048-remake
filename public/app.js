@@ -4,13 +4,40 @@ var url = "https://my-2048-remake.herokuapp.com" // heroku server
 // Requests to server
 
 // List
-let getScores = function() {
+let getScores = function () {
     fetch(`${url}` + "/scores").then(response => {
         response.json().then(scores => {
+            var orderedScoreList = [];
+            var biggest = {
+                name: "",
+                score: 0
+            };
+            var biggestIndex = 0;
+            var j = 0;
+            for(var i = 0; i < 5; i++) {
+                scores.forEach(score => {
+                    if (score.score > biggest.score) {
+                        biggest.name = score.name;
+                        biggest.score = score.score;
+                        biggestIndex = j;
+                    }
+
+                    j += 1;
+                });
+                orderedScoreList.push(biggest);
+                scores.splice(biggestIndex, 1);
+                biggest = {
+                    name: "",
+                    score: 0
+                };
+                j = 0;
+            }
             var scoreList = document.querySelector("#high-scores-list");
-            scores.forEach(score => {
+            var count = 0;
+            orderedScoreList.forEach(score => {
+                count += 1;
                 var item = document.createElement("li");
-                item.innerHTML = score.name + ": " + score.score;
+                item.innerHTML = count + ". " + score.name + ": " + score.score;
                 scoreList.appendChild(item);
             });
         });
