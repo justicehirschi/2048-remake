@@ -1,5 +1,5 @@
-// var url = "http://localhost:8080" // localhost
-var url = "https://my-2048-remake.herokuapp.com" // heroku server
+var url = "http://localhost:8080" // localhost
+// var url = "https://my-2048-remake.herokuapp.com" // heroku server
 
 // Requests to server
 
