@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"
@@ -12,6 +11,15 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.5.5"
-  }
+    "mongoose": "^5.7.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justicehirschi/2048-remake.git"
+  },
+  "bugs": {
+    "url": "https://github.com/justicehirschi/2048-remake/issues"
+  },
+  "homepage": "https://github.com/justicehirschi/2048-remake#readme",
+  "description": ""
 }

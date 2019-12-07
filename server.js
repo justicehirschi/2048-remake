@@ -6,8 +6,8 @@ const cors = require("cors");
 let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// var corsOrigin = "null" // localhost
-var corsOrigin = "https://justicehirschi.github.io" // heroku server
+var corsOrigin = "null" // localhost
+// var corsOrigin = "https://justicehirschi.github.io" // heroku server
 
 app.use(cors({credentials: true, origin: `${corsOrigin}`})); 
 app.set("port", (process.env.PORT || 8080));

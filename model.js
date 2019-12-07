@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://jhirschi:123456a@ds245677.mlab.com:45677/2048_scores_db", {useNewUrlParser: true});
+mongoose.connect("mongodb://jhirschi:123456a@ds245677.mlab.com:45677/2048_scores_db", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const highScoreSchema = new mongoose.Schema ({

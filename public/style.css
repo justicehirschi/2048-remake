@@ -5,11 +5,15 @@ body {
     -webkit-user-select: none;
 }
 
+main {
+    text-align: center;
+}
+
 /* Header */
 
 header {
     color: #8B9474;
-    font-size: 2.7rem;
+    font-size: 2.5rem;
     text-align: center;
 }
 
@@ -34,10 +38,8 @@ header h1 {
 #board {
     background: #117175;
     border-radius: 8px;
-    display: block;
-    width: 540px;
+    display: inline-block;
     padding: 5px;
-    margin: auto;
 }
 
 .row {
@@ -49,12 +51,12 @@ header h1 {
     border-radius: 4px;
     color: #fff;
     float: left;
-    font-size: 4.5rem;
-    height: 125px;
-    line-height: 125px;
+    font-size: 2.0rem;
+    height: 80px;
+    line-height: 80px;
     margin: 5px;
     text-align: center;
-    width: 125px;
+    width: 80px;
 }
 
 .tile-2 {
@@ -95,12 +97,10 @@ header h1 {
 
 .tile-1024 {
     background: #C93482;
-    font-size: 40px;
 }
 
 .tile-2048 {
     background: rgb(125, 5, 136);
-    font-size: 40px;
 }
 
 button:focus {outline:0;}
@@ -133,7 +133,7 @@ button:hover {
     left: 0;
     right: 0;
     margin: auto;
-    width: 800px;
+    width: 75%;
     height: 95%;
     background-color: #258f5f;
     border-radius: 15px;
@@ -142,7 +142,7 @@ button:hover {
 }
 
 #game-over {
-    font-size: 4.8rem;
+    font-size: 3.8rem;
     font-weight: bold;
     margin: 0px 0px 20px 0px;
     padding: 180px 0px 20px 0px;
@@ -150,7 +150,7 @@ button:hover {
 }
 
 #game-over-page h3 {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     font-weight: bold;
     margin: 10px;
 }
